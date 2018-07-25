@@ -1,20 +1,11 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <h1>Product List</h1>
 
     {% if products %}
-    <ul>
-
-      {% for product in products %}
-      <li>
-        <a href="{{ product.url }}">{{ product.title }}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
+        
     {% if is_paginated %}
-        <div class="pagination">
+        <div class="pagination d-flex justify-content-center">
             <span class="page-links">
                 {% if page_obj.has_previous %}
                     <a href="/products?page={{ page_obj.previous_page_number }}">previous</a>
@@ -28,6 +19,21 @@
             </span>
         </div>
     {% endif %}
+    <ul>
+        <div class="row">
+      {% for product in products %}
+      <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{product.thumbnail}}" alt="{{product.title}}">
+            <div class="card-body">
+              <h5 class="card-title">{{product.title}}</h5>
+              <a href="{{product.url}}" class="btn btn-primary">View product</a>
+            </div>
+        </div>
+    </div>
+      {% endfor %}
+    </div>
+    </ul>
     {% else %}
       <p>There are no products in the Store.</p>
     {% endif %}       
