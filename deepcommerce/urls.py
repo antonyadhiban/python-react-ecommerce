@@ -19,5 +19,6 @@ from app import views
 
 urlpatterns = [
     url('', include('app.urls')),
+    url('', include('frontend.urls')),
 ]
 
