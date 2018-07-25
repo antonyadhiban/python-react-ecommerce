@@ -15,10 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
-from app import views
 
 urlpatterns = [
     url('', include('app.urls')),
-    url('', include('frontend.urls')),
 ]
 
